@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         register = (Button) findViewById(R.id.btnRegister);
         register.setOnClickListener(this);
+        nameRegister = (TextView) findViewById(R.id.input_name_register);
+        passwordRegister = (TextView) findViewById(R.id.input_password_registration);
     }
 
     @Override
