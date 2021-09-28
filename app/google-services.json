@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "825735342991",
+    "firebase_url": "https://communityeats-2bce4-default-rtdb.firebaseio.com",
+    "project_id": "communityeats-2bce4",
+    "storage_bucket": "communityeats-2bce4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825735342991:android:63181cd3b7cbe95f8ff9fa",
+        "android_client_info": {
+          "package_name": "com.example.communityeats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825735342991-0f05mla8t7iren1bkda1vkm9fbkpb2ou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPsfQz56lf8L3jE8ZwJ6nLaPv4V8Z5oB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825735342991-0f05mla8t7iren1bkda1vkm9fbkpb2ou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
