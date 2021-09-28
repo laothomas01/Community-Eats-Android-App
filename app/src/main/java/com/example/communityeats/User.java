@@ -1,14 +1,14 @@
 package com.example.communityeats;
 
 public class User {
-    public String username,password;
+    public String email,password;
     public User()
     {
 
     }
-    public User(String username, String password)
+    public User(String email, String password)
     {
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 }
