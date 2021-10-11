@@ -4,21 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#58E967"
     tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/logo"
-<<<<<<< HEAD
         android:layout_width="248dp"
         android:layout_height="105dp"
-=======
-        android:layout_width="224dp"
-        android:layout_height="103dp"
->>>>>>> dev-branch
         android:text="Community Eats"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textIsSelectable="true"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -66,7 +60,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="Password"
+        android:hint="Password"
         app:layout_constraintEnd_toEndOf="@+id/input_email_registration"
         app:layout_constraintStart_toStartOf="@+id/input_email_registration"
         app:layout_constraintTop_toBottomOf="@+id/input_email_registration" />
