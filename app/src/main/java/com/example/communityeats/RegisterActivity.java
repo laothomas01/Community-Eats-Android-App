@@ -38,7 +38,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
           registerUser();
-    }
+    } //<- has an issue I think.
     private void registerUser()
     {
         String email = emailRegister.getText().toString().trim();
