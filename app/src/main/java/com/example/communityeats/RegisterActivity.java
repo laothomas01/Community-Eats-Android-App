@@ -1,6 +1,7 @@
 package com.example.communityeats;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private Button register;
+    private Button haveAccount;
     private EditText emailRegister;
     private EditText passwordRegister;
       protected void onCreate(Bundle savedInstanceState)
@@ -31,14 +33,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
           register = (Button) findViewById(R.id.btnRegister);
           register.setOnClickListener(this);
+          haveAccount = (Button) findViewById(R.id.btnHaveAccount);
+          haveAccount.setOnClickListener(this);
           emailRegister = (EditText) findViewById(R.id.input_email_registration);
           passwordRegister = (EditText) findViewById(R.id.input_password_registration);
       }
 
     @Override
     public void onClick(View v) {
-          registerUser();
-    } //<- has an issue I think.
+        switch(v.getId())
+        {
+            case R.id.btnRegister:
+                registerUser();
+
+            case R.id.btnHaveAccount:
+                startActivity(new Intent(this,LoginActivity.class));
+        }
+
+    }
     private void registerUser()
     {
         String email = emailRegister.getText().toString().trim();
