@@ -30,6 +30,10 @@
             android:label="Preferences"></activity>
         <activity android:name="FoodDonationActivity"
             android:label="Preferences"></activity>
+        <activity android:name=".HomeScreenActivity"
+            android:label="Preferences"></activity>
+        <activity android:name=".HomeActivity"
+            android:label="Preferences"></activity>
     </application>
 
 </manifest>

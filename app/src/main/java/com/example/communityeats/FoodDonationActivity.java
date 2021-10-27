@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,12 +13,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,7 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class FoodDonationActivity extends Activity implements View.OnClickListener {
+public class FoodDonationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String userName;
     private Button submitFoodDonation;
@@ -56,6 +60,32 @@ public class FoodDonationActivity extends Activity implements View.OnClickListen
         itemImage.setOnClickListener(this);
 
         itemImagesRef = FirebaseStorage.getInstance().getReference().child("Food Images");
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_food);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id){
+                    case R.id.nav_home:
+                        startActivity(new Intent(FoodDonationActivity.this, HomeScreenActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_food:
+                        startActivity(new Intent(FoodDonationActivity.this, FoodDonationActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(FoodDonationActivity.this, ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+
+                return false;
+            }
+        });
     }
 
 
@@ -159,6 +189,7 @@ public class FoodDonationActivity extends Activity implements View.OnClickListen
         foodItemsMap.put(itemKey,foodDonationItem);
         FirebaseDatabase.getInstance().getReference("FoodDonationItem")
                 .child("FoodDonationItems")
+                .push()
                 .setValue(foodItemsMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
