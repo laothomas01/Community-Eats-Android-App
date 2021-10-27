@@ -91,7 +91,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                    startActivity(new Intent(LoginActivity.this, FoodDonationActivity.class));
+//                    startActivity(new Intent(LoginActivity.this, FoodDonationActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Failed to login!", Toast.LENGTH_LONG).show();
                 }
