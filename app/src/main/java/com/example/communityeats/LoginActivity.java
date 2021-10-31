@@ -26,6 +26,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText editTextEmail;
     private EditText editTextPassword;
 
+    public static String loginToken;
+
+
+//    public String getLoginToken() {
+//        return loginToken;
+//    }
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,10 +58,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {    // clicking on different buttons or text views
             case R.id.signup:
                 startActivity(new Intent(this, RegisterActivity.class));
-                break;
+
             case R.id.signIn:
                 userLogin();
-                break;
+
 
         }
     }
@@ -89,7 +95,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                    //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                    loginToken = task.getResult().getUser().getEmail();
+
+                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Failed to login!", Toast.LENGTH_LONG).show();
                 }
