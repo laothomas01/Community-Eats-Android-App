@@ -72,6 +72,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     if (task.isSuccessful()) {
                         FirebaseDatabase.getInstance().getReference("User")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                //find a way to not store the password
                                 .setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
