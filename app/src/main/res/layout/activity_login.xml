@@ -84,5 +84,14 @@
         app:layout_constraintStart_toStartOf="@+id/signIn"
         app:layout_constraintTop_toBottomOf="@+id/signIn" />
 
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="152dp"
+        android:layout_height="29dp"
+        android:text="Remember Me"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="529dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
