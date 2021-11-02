@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_food">
+
+    <activity
+        android:id="@+id/nav_food"
+        android:name="com.example.communityeats.FoodDonationActivity"
+        android:label="activity_food_donation"
+        tools:layout="@layout/activity_food_donation" />
+    <activity
+        android:id="@+id/nav_home"
+        android:name="com.example.communityeats.HomeScreenActivity"
+        android:label="HomeScreenActivity" />
+    <activity
+        android:id="@+id/nav_profile"
+        android:name="com.example.communityeats.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
+</navigation>
