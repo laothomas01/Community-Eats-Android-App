@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends Activity implements View.OnClickListener {
-
+    //TEST
     private FirebaseAuth mAuth;
     private Button register;
     private Button haveAccount;
@@ -30,7 +30,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_register);
           mAuth = FirebaseAuth.getInstance();
-
+          //TEST...
           register = (Button) findViewById(R.id.btnRegister);
           register.setOnClickListener(this);
           haveAccount = (Button) findViewById(R.id.btnHaveAccount);
