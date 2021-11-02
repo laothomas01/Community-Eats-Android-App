@@ -47,6 +47,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 registerUser();
 
             case R.id.btnHaveAccount:
+                //Provided idea to Thomas about ways to store information to the database via
+                //Intents. We also considered using bundles as well for passing data between various Android activities.
                 startActivity(new Intent(this,LoginActivity.class));
         }
 
