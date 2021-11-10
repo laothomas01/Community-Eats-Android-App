@@ -1,6 +1,5 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.communityeats.R;
+import com.example.communityeats.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -30,21 +29,26 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                Fragment selectedFragment = null;
                 switch(id){
                     case R.id.nav_home:
                         startActivity(new Intent(HomeScreenActivity.this, HomeScreenActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
+                       return true;
                     case R.id.nav_food:
                         startActivity(new Intent(HomeScreenActivity.this, FoodDonationActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
+                       return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(HomeScreenActivity.this, ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                        selectedFragment = new ProfileFragment();
+                            break;
+//                        startActivity(new Intent(HomeScreenActivity.this, ProfileFragment.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
                 }
+               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
 
+//                return false;
                 return false;
             }
         });

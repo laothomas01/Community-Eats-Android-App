@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/drawable-mdpi/ic_forkspoon.xml" value="0.30625" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_homescreen.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_register.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_food_donation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/menu/bottom_menu.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/Thomas Lao/2021-fall-cs160-black-widow/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_profile.xml" value="0.45" />

@@ -11,9 +11,9 @@
         android:title="Food"
         android:icon="@drawable/ic_forkspoon"
         android:iconTint="@color/black"/>
-    <item
-        android:id="@+id/nav_profile"
-        android:title="Profile"
-        android:icon="@drawable/ic_profile"
-        android:iconTint="@color/black"/>
+   <item android:id="@+id/nav_profile"
+       android:title="Profile"
+       android:icon="@drawable/ic_profile"
+       android:iconTint="@color/black"/>
+
 </menu>

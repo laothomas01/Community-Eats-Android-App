@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
 import android.os.Bundle;
 
