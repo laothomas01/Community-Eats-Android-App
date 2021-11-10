@@ -1,31 +1,24 @@
-package com.example.communityeats.models;
-
-/*
-
-Register:
-    User:
-        email,pass,username,address,
-
-
-*/
+package com.example.communityeats;
 
 public class User {
-    public String email, password, username, address, profilePictureUrl;
+    public String email, password, username, address;
 
     public User() {
 
     }
 
-    public User(String email, String password, String username, String address, String profilePictureUrl) {
+    public User(String email, String password, String username, String address) {
         this.email = email;
         this.password = password;
         this.address = address;
         this.username = username;
-        this.profilePictureUrl = profilePictureUrl;
+
     }
 
-
-
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public String getEmail() {
         return this.email;
@@ -51,17 +44,7 @@ public class User {
         this.password = password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getProfilePicUrl() {
-        return profilePictureUrl;
-    }
-
-    public void setProfilePictureUrl(String url) {
-        this.profilePictureUrl = url;
-    }
+    public void setUsername(String username) { this.username = username;}
 
 
 }
