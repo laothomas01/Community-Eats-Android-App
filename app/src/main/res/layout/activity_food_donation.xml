@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/donation_container"
-    tools:context=".FoodDonationActivity">
+    tools:context=".activities.FoodDonationActivity">
 
     <TextView
         android:id="@+id/banner"

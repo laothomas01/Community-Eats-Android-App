@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.model;
 
 public class User {
     public String email, password, username, address;

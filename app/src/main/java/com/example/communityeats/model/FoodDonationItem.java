@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.model;
 
 public class FoodDonationItem {
     public String date, foodName,foodQuantity,foodDescription,foodImageUrl;

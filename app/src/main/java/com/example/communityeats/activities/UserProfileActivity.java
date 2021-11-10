@@ -1,11 +1,10 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.communityeats.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,12 +20,10 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class ProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
     //XML features
     private ImageView profilepicTxt;
     private TextView emailTxt;
@@ -34,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView phonenumTxt;
 
     //debug TAG
-    private static final String TAG = ProfileActivity.class.getSimpleName();
+    private static final String TAG = UserProfileActivity.class.getSimpleName();
 
     //accessing firebase database
     private static final String USER = "User";
@@ -71,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
                     //if the user exists
                     if (task.getResult().exists()) {
                         //toast
-                        Toast.makeText(ProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
                         //create a snapshot of that data
                         DataSnapshot ds = task.getResult();
                         //get the email from the user node.
@@ -84,10 +82,10 @@ public class ProfileActivity extends AppCompatActivity {
                         addressTxt.setText(address);
 
                     } else {
-                        Toast.makeText(ProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -105,15 +103,15 @@ public class ProfileActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.nav_home:
-                        startActivity(new Intent(ProfileActivity.this, HomeScreenActivity.class));
+                        startActivity(new Intent(UserProfileActivity.this, HomeScreenActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_food:
-                        startActivity(new Intent(ProfileActivity.this, FoodDonationActivity.class));
+                        startActivity(new Intent(UserProfileActivity.this, FoodDonationActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
+                        startActivity(new Intent(UserProfileActivity.this, UserProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }
