@@ -28,7 +28,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText password;
     private EditText username;
     private EditText address;
-
+    
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
