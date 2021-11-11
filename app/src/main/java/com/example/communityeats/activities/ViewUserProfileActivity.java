@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import android.view.View;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -23,13 +24,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ViewUserProfileActivity extends AppCompatActivity {
+public class ViewUserProfileActivity extends AppCompatActivity implements View.OnClickListener {
     //XML features
     private ImageView profilepicTxt;
     private TextView emailTxt;
     private TextView usernameTxt;
     private TextView addressTxt;
     private TextView phonenumTxt;
+    private Button update;
 
     //debug TAG
     private static final String TAG = ViewUserProfileActivity.class.getSimpleName();
@@ -51,7 +53,9 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         emailTxt = findViewById(R.id.display_email);
         usernameTxt = findViewById(R.id.display_username);
         addressTxt = findViewById(R.id.display_address);
+        update = findViewById(R.id.update_button);
 
+        update.setOnClickListener(this);
         //access firebase currently logged in user
         user = FirebaseAuth.getInstance().getCurrentUser();
         //get the ID of our current user because we do not have usernames.
@@ -114,10 +118,19 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                         startActivity(new Intent(ViewUserProfileActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
+
                 }
 
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.update_button:
+                startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
+        }
     }
 }

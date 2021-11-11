@@ -28,7 +28,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText password;
     private EditText username;
     private EditText address;
-    
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +63,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         String usernameRegister = username.getText().toString().trim();
         String addressRegister = address.getText().toString().trim();
         //public User(String email, String password,String username, String address
-        User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister);
+        User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister, "");
         {
             mAuth.createUserWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
