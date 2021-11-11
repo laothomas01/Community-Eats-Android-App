@@ -16,8 +16,6 @@ public class FoodDonationItem {
         this.foodQuantity = foodQuantity;
         this.foodDescription = foodDescription;
         this.foodImageUrl = foodImageUrl;
-
-
     }
 
 }

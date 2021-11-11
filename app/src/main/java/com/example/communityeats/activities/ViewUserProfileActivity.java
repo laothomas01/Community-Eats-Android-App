@@ -23,7 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class ViewUserProfileActivity extends AppCompatActivity {
     //XML features
     private ImageView profilepicTxt;
     private TextView emailTxt;
@@ -32,7 +32,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView phonenumTxt;
 
     //debug TAG
-    private static final String TAG = UserProfileActivity.class.getSimpleName();
+    private static final String TAG = ViewUserProfileActivity.class.getSimpleName();
 
     //accessing firebase database
     private static final String USER = "User";
@@ -69,7 +69,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     //if the user exists
                     if (task.getResult().exists()) {
                         //toast
-                        Toast.makeText(UserProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewUserProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
                         //create a snapshot of that data
                         DataSnapshot ds = task.getResult();
                         //get the email from the user node.
@@ -82,10 +82,10 @@ public class UserProfileActivity extends AppCompatActivity {
                         addressTxt.setText(address);
 
                     } else {
-                        Toast.makeText(UserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(UserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -103,15 +103,15 @@ public class UserProfileActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.nav_home:
-                        startActivity(new Intent(UserProfileActivity.this, HomeScreenActivity.class));
+                        startActivity(new Intent(ViewUserProfileActivity.this, HomeScreenActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_food:
-                        startActivity(new Intent(UserProfileActivity.this, FoodDonationActivity.class));
+                        startActivity(new Intent(ViewUserProfileActivity.this, FoodDonationActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(UserProfileActivity.this, UserProfileActivity.class));
+                        startActivity(new Intent(ViewUserProfileActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }

@@ -37,7 +37,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(HomeScreenActivity.this, UserProfileActivity.class));
+                        startActivity(new Intent(HomeScreenActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

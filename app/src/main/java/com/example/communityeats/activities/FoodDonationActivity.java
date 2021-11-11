@@ -78,7 +78,7 @@ public class FoodDonationActivity extends AppCompatActivity implements View.OnCl
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(FoodDonationActivity.this, UserProfileActivity.class));
+                        startActivity(new Intent(FoodDonationActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

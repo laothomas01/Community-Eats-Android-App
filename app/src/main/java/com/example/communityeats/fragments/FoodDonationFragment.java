@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.fragments;
 
 import android.os.Bundle;
 

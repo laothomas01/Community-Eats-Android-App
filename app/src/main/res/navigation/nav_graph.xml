@@ -16,7 +16,7 @@
         android:label="HomeScreenActivity" />
     <activity
         android:id="@+id/nav_profile"
-        android:name="com.example.communityeats.activities.UserProfileActivity"
+        android:name="com.example.communityeats.activities.ViewUserProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
 </navigation>
