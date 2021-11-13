@@ -28,19 +28,27 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class UpdateProfileActivity extends AppCompatActivity implements View.OnClickListener {
+    /*
+    Initialize our XML components
+     */
     private ImageView profile_pic;
-    private EditText username;
     private Button update;
+
+    //request code for photo gallery access
     private static final int GalleryPick = 1;
+
     private Uri imageUri;
+    //path of the image to be uploaded
     private String downloadImageUrl;
+
     //firebase auth
     private static final String USER = "User";
     private FirebaseUser user;
+    //access to firebase storage
     StorageReference storage;
     private DatabaseReference ref;
+    ///user Id from firebase
     String uid;
-    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,34 +69,6 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
         //reference the children of the user node.
         storage = FirebaseStorage.getInstance().getReference().child("profile_picture");
 
-//        reference.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                //if you successfully got the task
-//                if (task.isSuccessful()) {
-//                    //if the user exists
-//                    if (task.getResult().exists()) {
-//                        //toast
-//                        Toast.makeText(UpdateProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
-//                        //create a snapshot of that data
-//                        DataSnapshot ds = task.getResult();
-//                        //get the email from the user node.
-////                        String email = String.valueOf(ds.child("email").getValue());
-////                        String username = String.valueOf(ds.child("username").getValue());
-////                        String address = String.valueOf(ds.child("address").getValue());
-////
-////                        emailTxt.setText(email);
-////                        usernameTxt.setText(username);
-////                        addressTxt.setText(address);
-//
-//                    } else {
-//                        Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
     }
 
@@ -128,8 +108,6 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
         if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
             imageUri = data.getData();
             profile_pic.setImageURI(imageUri);
-
-
         }
     }
 

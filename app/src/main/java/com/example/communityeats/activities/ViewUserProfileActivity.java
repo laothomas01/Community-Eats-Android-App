@@ -3,7 +3,9 @@ package com.example.communityeats.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.communityeats.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,11 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ViewUserProfileActivity extends AppCompatActivity implements View.OnClickListener {
     //XML features
-    private ImageView profilepicTxt;
+    private ImageView profilePic;
     private TextView emailTxt;
     private TextView usernameTxt;
     private TextView addressTxt;
-    private TextView phonenumTxt;
     private Button update;
 
     //debug TAG
@@ -44,6 +46,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
     private String email;
     private String uid;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
         usernameTxt = findViewById(R.id.display_username);
         addressTxt = findViewById(R.id.display_address);
         update = findViewById(R.id.update_button);
+        profilePic = findViewById(R.id.user_profile_image);
 
         update.setOnClickListener(this);
         //access firebase currently logged in user
@@ -63,6 +67,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
         //reference to get our User node
         reference = FirebaseDatabase.getInstance().getReference(USER);
         //reference the children of the user node.
+
 
         //if we get the userID, add a listener
         reference.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -80,10 +85,14 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                         String email = String.valueOf(ds.child("email").getValue());
                         String username = String.valueOf(ds.child("username").getValue());
                         String address = String.valueOf(ds.child("address").getValue());
+                        String imageUrl = String.valueOf(ds.child("imageURL").getValue());
+
 
                         emailTxt.setText(email);
                         usernameTxt.setText(username);
                         addressTxt.setText(address);
+
+                        Glide.with(ViewUserProfileActivity.this).load(imageUrl).into(profilePic);
 
                     } else {
                         Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
@@ -91,10 +100,15 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                 } else {
                     Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
                 }
+
             }
+
+
         });
 
+//        Glide.with(this).load(imageUrl).into(profilePic);
 
+//
 //        System.out.println(uid);
 
 
