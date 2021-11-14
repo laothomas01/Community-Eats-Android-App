@@ -19,8 +19,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
-    private TextView signup;
 
+
+    private TextView signup;
     private FirebaseAuth mAuth;
     private Button login;
     private TextView signUp;
@@ -28,11 +29,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText editTextPassword;
 
     public static String loginToken;
-
-
-//    public String getLoginToken() {
-//        return loginToken;
-//    }
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,22 +44,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
-
-
     }
-
 
     @Override
     public void onClick(View v) {
-
-        switch (v.getId()) {    // clicking on different buttons or text views
-            case R.id.signup:
-                startActivity(new Intent(this, RegisterActivity.class));
-
-            case R.id.signIn:
-                userLogin();
-
-
+        
+        if (v.getId() == R.id.signup) {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        }
+        if (v.getId() == R.id.signIn) {
+            userLogin();
         }
     }
 
