@@ -6,10 +6,22 @@
         <entry key="..\:/Users/Yingzheng Yu/AndroidStudioProjects/CS160/Project/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_login.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_profile.xml" value="0.45" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/drawable/item_selector.xml" value="0.14427083333333332" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.14166666666666666" />
+        <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.14166666666666666" />
+        <entry key="app/src/main/res/drawable/rounded_imageview.xml" value="0.2630208333333333" />
+        <entry key="app/src/main/res/drawable/rounded_nav.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/activity_food_donation.xml" value="0.1977083690446218" />
+        <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.15676399454097592" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24053351033033812" />
+        <entry key="app/src/main/res/layout/fragment_food_donation.xml" value="0.1140625" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2026487568873041" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.30439072670471895" />
       </map>
     </option>
   </component>
