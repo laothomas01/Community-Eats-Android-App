@@ -110,21 +110,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     }
 
-
-
-
     @Override
     public void onClick(View v) {
-
-        switch (v.getId()) {    // clicking on different buttons or text views
-            case R.id.signup:
-                startActivity(new Intent(this, RegisterActivity.class));
-
-            case R.id.signIn:
-                userLogin();
-
-
+        if (v.getId() == R.id.signup) {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         }
+        if (v.getId() == R.id.signIn) {
+            userLogin();
+        }
+        if (v.getId() == R.id.logoutBtn){
+            userLogout();
+        }
+    }
+
+    private void userLogout() {
+        mAuth.getInstance().signOut();
     }
 
     private void userLogin() {
