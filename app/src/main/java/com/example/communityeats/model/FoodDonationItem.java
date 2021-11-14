@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.model;
 
 public class FoodDonationItem {
     public String date, foodName,foodQuantity,foodDescription,foodImageUrl;
@@ -16,8 +16,6 @@ public class FoodDonationItem {
         this.foodQuantity = foodQuantity;
         this.foodDescription = foodDescription;
         this.foodImageUrl = foodImageUrl;
-
-
     }
 
 }

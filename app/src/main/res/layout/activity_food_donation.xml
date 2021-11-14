@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/donation_container"
-    tools:context=".FoodDonationActivity">
+    tools:context=".activities.FoodDonationActivity">
 
     <TextView
         android:id="@+id/banner"
@@ -27,14 +27,14 @@
         android:id="@+id/food_placeholder_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginTop="20dp"
         android:cropToPadding="false"
-        android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/upload_image"
-        app:layout_constraintTop_toBottomOf="@id/banner"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner" />
 
     <EditText
         android:id="@+id/itemName"
