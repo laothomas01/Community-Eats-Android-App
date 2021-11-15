@@ -55,6 +55,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.signIn) {
             userLogin();
         }
+        //if user clicks on logout button
+        if (v.getId() == R.id.logoutBtn){
+            userLogout();
+        }
+    }
+    //Logout function
+    private void userLogout() {
+        mAuth.getInstance().signOut();
     }
 
     private void userLogin() {
