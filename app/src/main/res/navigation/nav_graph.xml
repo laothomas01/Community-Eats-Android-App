@@ -7,16 +7,16 @@
 
     <activity
         android:id="@+id/nav_food"
-        android:name="com.example.communityeats.FoodDonationActivity"
+        android:name="com.example.communityeats.activities.FoodDonationActivity"
         android:label="activity_food_donation"
         tools:layout="@layout/activity_food_donation" />
     <activity
         android:id="@+id/nav_home"
-        android:name="com.example.communityeats.HomeScreenActivity"
+        android:name="com.example.communityeats.activities.HomeScreenActivity"
         android:label="HomeScreenActivity" />
     <activity
         android:id="@+id/nav_profile"
-        android:name="com.example.communityeats.ProfileActivity"
+        android:name="com.example.communityeats.activities.ViewUserProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
 </navigation>

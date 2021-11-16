@@ -1,4 +1,4 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,20 +12,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.communityeats.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
-    private TextView signup;
 
+
+    private TextView signup;
     private FirebaseAuth mAuth;
     private Button login;
     private TextView signUp;
     private EditText editTextEmail;
     private EditText editTextPassword;
 
+    public static String loginToken;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,23 +44,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
-
-
     }
-
 
     @Override
     public void onClick(View v) {
-
-        switch (v.getId()) {    // clicking on different buttons or text views
-            case R.id.signup:
-                startActivity(new Intent(this, RegisterActivity.class));
-
-            case R.id.signIn:
-                userLogin();
-
-
-
+        
+        if (v.getId() == R.id.signup) {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        }
+        if (v.getId() == R.id.signIn) {
+            userLogin();
         }
     }
 
@@ -91,6 +87,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                    loginToken = task.getResult().getUser().getEmail();
+
                     startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Failed to login!", Toast.LENGTH_LONG).show();

@@ -1,6 +1,5 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+import com.example.communityeats.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
@@ -86,7 +87,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(HomeScreenActivity.this, ProfileActivity.class));
+                        startActivity(new Intent(HomeScreenActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
