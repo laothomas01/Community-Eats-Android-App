@@ -45,4 +45,12 @@ public class FoodDonationItem {
     public void setFoodDescription(String foodDescription) {
         this.foodDescription = foodDescription;
     }
+
+    public String getFoodImageUrl() {
+        return foodImageUrl;
+    }
+
+    public void setFoodImageUrl(String foodImageUrl) {
+        this.foodImageUrl = foodImageUrl;
+    }
 }

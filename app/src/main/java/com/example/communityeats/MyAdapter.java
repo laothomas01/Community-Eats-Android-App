@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.communityeats.model.FoodDonationItem;
+
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder> {
@@ -33,14 +36,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     public void onBindViewHolder(@NonNull FoodItemViewHolder holder, int position) {
         FoodDonationItem foodItem = list.get(position);
 
-        //System.out.println("FOOD ITEM:" + foodItem.getFoodName().toString());
 
-        /*
-        error here: foodItem is not retrieving information correctly
-        */
         holder.foodItemName.setText(foodItem.getFoodName());
         holder.foodItemQuantity.setText(foodItem.getFoodQuantity());
         holder.foodItemDescription.setText(foodItem.getFoodDescription());
+
+        Glide.with(context).load(foodItem.getFoodImageUrl()).into(holder.foodImage);
+        // System.out.println("IMAGE URL:" + foodItem.getFoodImageUrl());
 
     }
 

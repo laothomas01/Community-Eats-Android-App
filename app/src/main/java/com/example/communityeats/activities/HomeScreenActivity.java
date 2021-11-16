@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +17,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.communityeats.MyAdapter;
+import com.example.communityeats.model.FoodDonationItem;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import com.example.communityeats.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ValueEventListener;
-
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class HomeScreenActivity extends AppCompatActivity {
@@ -47,26 +52,71 @@ public class HomeScreenActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        list = new ArrayList<>();
-        myAdapter = new MyAdapter(this, list);
-        recyclerView.setAdapter(myAdapter);
+        String uid = FoodItemsRef.getKey();
 
-        FoodItemsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
-                    list.add(foodItem);
-                }
-                myAdapter.notifyDataSetChanged();
-                System.out.println("Food Donation Item Added");
-            }
+        // FoodItemsRef.child(uid).get().addOnCompleteListener()
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+ // change here
+    // FoodItemsRef.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+    //         @Override
+    //         public void onComplete(@NonNull Task<DataSnapshot> task) {
+    //             //if you successfully got the task
+    //             if (task.isSuccessful()) {
+    //                 //if the food donation item exists
+    //                 if (task.getResult().exists()) {
+    //                     //toast
+    //                     Toast.makeText(HomeScreenActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
+    //                     //create a snapshot of that data
+    //                     DataSnapshot ds = task.getResult();
 
-            }
-        });
+    //                     //get the email from the user node.
+    //                     // String email = String.valueOf(ds.child("email").getValue());
+    //                     // String username = String.valueOf(ds.child("username").getValue());
+    //                     // String address = String.valueOf(ds.child("address").getValue());
+
+    //                     String imageUrl = String.valueOf(ds.child("foodImageUrl").getValue());
+    //                     // String imageUrl = String.valueOf(ds.child("imageURL").getValue());
+
+
+    //                     // emailTxt.setText(email);
+    //                     // usernameTxt.setText(username);
+    //                     // addressTxt.setText(address);
+
+
+    //                     Glide.with(HomeScreenActivity.this).load(imageUrl).into(profilePic);
+
+    //                 } else {
+    //                     // Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
+    //                 }
+    //             } else {
+    //                 // Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
+    //             }
+
+    //         }
+
+
+    //     });
+
+         list = new ArrayList<>();
+         myAdapter = new MyAdapter(this, list);
+         recyclerView.setAdapter(myAdapter);
+
+         FoodItemsRef.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                     FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
+                     list.add(foodItem);
+                 }
+                 myAdapter.notifyDataSetChanged();
+                 System.out.println("Food Donation Item Added");
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+
+             }
+         });
 
 
 
