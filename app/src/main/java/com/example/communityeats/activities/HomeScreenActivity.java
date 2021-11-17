@@ -54,49 +54,6 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         String uid = FoodItemsRef.getKey();
 
-        // FoodItemsRef.child(uid).get().addOnCompleteListener()
-
- // change here
-    // FoodItemsRef.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-    //         @Override
-    //         public void onComplete(@NonNull Task<DataSnapshot> task) {
-    //             //if you successfully got the task
-    //             if (task.isSuccessful()) {
-    //                 //if the food donation item exists
-    //                 if (task.getResult().exists()) {
-    //                     //toast
-    //                     Toast.makeText(HomeScreenActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
-    //                     //create a snapshot of that data
-    //                     DataSnapshot ds = task.getResult();
-
-    //                     //get the email from the user node.
-    //                     // String email = String.valueOf(ds.child("email").getValue());
-    //                     // String username = String.valueOf(ds.child("username").getValue());
-    //                     // String address = String.valueOf(ds.child("address").getValue());
-
-    //                     String imageUrl = String.valueOf(ds.child("foodImageUrl").getValue());
-    //                     // String imageUrl = String.valueOf(ds.child("imageURL").getValue());
-
-
-    //                     // emailTxt.setText(email);
-    //                     // usernameTxt.setText(username);
-    //                     // addressTxt.setText(address);
-
-
-    //                     Glide.with(HomeScreenActivity.this).load(imageUrl).into(profilePic);
-
-    //                 } else {
-    //                     // Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
-    //                 }
-    //             } else {
-    //                 // Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
-    //             }
-
-    //         }
-
-
-    //     });
-
          list = new ArrayList<>();
          myAdapter = new MyAdapter(this, list);
          recyclerView.setAdapter(myAdapter);
@@ -141,11 +98,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                 }
-
                 return false;
             }
         });
-
     }
-
 }

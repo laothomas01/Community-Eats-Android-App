@@ -20,6 +20,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     Context context;
     ArrayList<FoodDonationItem> list;
 
+    private OnItemClickListener mListener;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
     public MyAdapter(Context context, ArrayList<FoodDonationItem> list) {
         this.context = context;
         this.list = list;
@@ -43,6 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
 
         Glide.with(context).load(foodItem.getFoodImageUrl()).into(holder.foodImage);
         // System.out.println("IMAGE URL:" + foodItem.getFoodImageUrl());
+
 
     }
 
