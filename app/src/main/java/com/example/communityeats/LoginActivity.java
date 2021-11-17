@@ -14,13 +14,14 @@ import android.widget.Toast;
 import android.widget.CheckBox ;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView signup;
 
     private FirebaseAuth mAuth;
@@ -50,60 +51,60 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         signup = (TextView) findViewById(R.id.signup);
         signup.setOnClickListener(this);
 
-        remember = findViewById(R.id.rememberMe) ;
+//        remember = findViewById(R.id.rememberMe) ;
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
 
 
 
-        SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
-        String checkbox = preferences.getString("remember", "") ;
+//        SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
+//        String checkbox = preferences.getString("remember", "") ;
 
-        if (checkbox.equals("true"))
-        {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class) ;
-            startActivity(intent);
-        }
+//        if (checkbox.equals("true"))
+//        {
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class) ;
+//            startActivity(intent);
+//        }
+//
+//        else if (checkbox.equals("false"))
+//        {
+//            Toast.makeText(this, "Please Sign In", Toast.LENGTH_SHORT).show () ;
+//        }
 
-        else if (checkbox.equals("false"))
-        {
-            Toast.makeText(this, "Please Sign In", Toast.LENGTH_SHORT).show () ;
-        }
 
 
-
-        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-                if (compoundButton.isChecked())
-                {
-                    SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
-                    SharedPreferences.Editor editor = preferences.edit();
-
-                    editor.putString("remember", "true") ;
-
-                    editor.apply() ;
-
-                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show() ;
-
-                }
-
-                else if (! compoundButton.isChecked())
-                {
-                    SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
-                    SharedPreferences.Editor editor = preferences.edit();
-
-                    editor.putString("remember", "false") ;
-
-                    editor.apply() ;
-
-                    Toast.makeText(LoginActivity.this, "Unhecked", Toast.LENGTH_SHORT).show() ;
-                }
-
-            }
-        });
+//        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//
+//                if (compoundButton.isChecked())
+//                {
+//                    SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
+//                    SharedPreferences.Editor editor = preferences.edit();
+//
+//                    editor.putString("remember", "true") ;
+//
+//                    editor.apply() ;
+//
+//                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show() ;
+//
+//                }
+//
+//                else if (! compoundButton.isChecked())
+//                {
+//                    SharedPreferences preferences = getSharedPreferences ("checkbox", MODE_PRIVATE) ;
+//                    SharedPreferences.Editor editor = preferences.edit();
+//
+//                    editor.putString("remember", "false") ;
+//
+//                    editor.apply() ;
+//
+//                    Toast.makeText(LoginActivity.this, "Unhecked", Toast.LENGTH_SHORT).show() ;
+//                }
+//
+//            }
+//        });
 
 
 
