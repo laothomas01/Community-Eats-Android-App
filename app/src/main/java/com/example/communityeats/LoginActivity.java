@@ -62,7 +62,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         if (checkbox.equals("true"))
         {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class) ;
+            Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class) ;
             startActivity(intent);
         }
 
