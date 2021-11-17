@@ -30,7 +30,8 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
     private TextView emailTxt;
     private TextView usernameTxt;
     private TextView addressTxt;
-    private Button update;
+    private Button update; //update Button
+    private Button logout; //logout Button
 
     //debug TAG
     private static final String TAG = ViewUserProfileActivity.class.getSimpleName();
@@ -48,6 +49,9 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        logout = (Button) findViewById(R.id.logoutBtn);
+        logout.setOnClickListener(this);
 
         //find our XML features
         emailTxt = findViewById(R.id.display_email);
@@ -97,17 +101,13 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                 } else {
                     Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
                 }
-
             }
-
-
         });
 
 //        Glide.with(this).load(imageUrl).into(profilePic);
 
 //
 //        System.out.println(uid);
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -131,7 +131,6 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                         return true;
 
                 }
-
                 return false;
             }
         });
@@ -142,6 +141,14 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
         switch (v.getId()) {
             case R.id.update_button:
                 startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
+            case R.id.logoutBtn: //if user clicks on logout button
+                logOut();
         }
+    }
+    //logout function
+    private void logOut() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(ViewUserProfileActivity.this, LoginActivity.class));
+        Toast.makeText(ViewUserProfileActivity.this, "Logged out. See you soon!", Toast.LENGTH_LONG).show();
     }
 }
