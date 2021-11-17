@@ -2,16 +2,13 @@ package com.example.communityeats.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.CheckBox ;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,16 +36,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        CheckBox remember ;
-
         mAuth = FirebaseAuth.getInstance();
 
         login = (Button) findViewById(R.id.signIn);
         login.setOnClickListener(this);
         signup = (TextView) findViewById(R.id.signup);
         signup.setOnClickListener(this);
-
-//        remember = findViewById(R.id.rememberMe) ;
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
@@ -63,6 +56,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.signIn) {
             userLogin();
         }
+        //if user clicks on logout button
+        if (v.getId() == R.id.logoutBtn){
+            userLogout();
+        }
+    }
+    //Logout function
+    private void userLogout() {
+        mAuth.getInstance().signOut();
     }
 
     private void userLogin() {
