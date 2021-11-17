@@ -41,6 +41,9 @@ public class ViewFoodDonation extends AppCompatActivity implements View.OnClickL
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = reference.getKey();
 
+        accept = (Button) findViewById(R.id.logoutBtn);
+        accept.setOnClickListener(this);
+
         //our xml page
         setContentView(R.layout.view_food_donation);
         //connecting to our XML features
