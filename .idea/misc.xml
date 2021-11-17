@@ -18,11 +18,13 @@
         <entry key="app/src/main/res/drawable/rounded_imageview.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/rounded_nav.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_food_donation.xml" value="0.1977083690446218" />
-        <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.15676399454097592" />
+        <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.2671894323222169" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24053351033033812" />
+        <entry key="app/src/main/res/layout/activity_test.xml" value="0.19464285714285715" />
+        <entry key="app/src/main/res/layout/food_item_layout.xml" value="0.28540736930931915" />
         <entry key="app/src/main/res/layout/fragment_food_donation.xml" value="0.1140625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2026487568873041" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.30439072670471895" />
