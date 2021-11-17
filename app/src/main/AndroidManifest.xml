@@ -11,7 +11,7 @@
         android:theme="@style/Theme.CommunityEats"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.UpdateProfileActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

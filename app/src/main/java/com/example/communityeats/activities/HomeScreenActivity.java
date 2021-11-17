@@ -1,6 +1,5 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,10 +7,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.communityeats.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -40,7 +37,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(HomeScreenActivity.this, ProfileActivity.class));
+                        startActivity(new Intent(HomeScreenActivity.this, ViewUserProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
