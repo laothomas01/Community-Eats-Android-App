@@ -25,20 +25,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
 
-    public MyAdapter(Context context, ArrayList<FoodDonationItem> list) {
+    public MyAdapter(Context context, ArrayList<FoodDonationItem> list, OnItemClickListener listener) {
         this.context = context;
         this.list = list;
+        this.mListener = listener;
     }
 
     @NonNull
     @Override
     public FoodItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View v = LayoutInflater.from(context).inflate(R.layout.food_item_layout, parent, false);
-        return new FoodItemViewHolder(v);
+        return new FoodItemViewHolder(v,mListener);
     }
 
     @Override
@@ -61,21 +59,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         return list.size();
     }
 
-    public static class FoodItemViewHolder extends RecyclerView.ViewHolder
+    public static class FoodItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         public TextView foodItemName, foodItemQuantity, foodItemDescription;
         public ImageView foodImage;
+        OnItemClickListener mListener;
 
-
-        public FoodItemViewHolder(@NonNull View itemView) {
+        public FoodItemViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
 
             foodImage = (ImageView) itemView.findViewById(R.id.item_image);
             foodItemName = (TextView) itemView.findViewById(R.id.item_name);
             foodItemQuantity = (TextView) itemView.findViewById(R.id.item_quantity);
             foodItemDescription = (TextView) itemView.findViewById(R.id.item_description);
+            this.mListener = listener;
+            itemView.setOnClickListener(this);
 
+        }
 
+        @Override
+        public void onClick(View v) {
+            mListener.onItemClick(getBindingAdapterPosition());
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.communityeats.model;
 
-public class FoodDonationItem {
+import java.io.Serializable;
+
+public class FoodDonationItem implements Serializable {
     public String date, foodName,foodQuantity,foodDescription,foodImageUrl, donorID, recipientID;
 
     public FoodDonationItem() {
@@ -52,5 +54,13 @@ public class FoodDonationItem {
 
     public void setFoodImageUrl(String foodImageUrl) {
         this.foodImageUrl = foodImageUrl;
+    }
+
+    public String getRecipientID() {
+        return recipientID;
+    }
+
+    public void setRecipientID(String recipientID) {
+        this.recipientID = recipientID;
     }
 }

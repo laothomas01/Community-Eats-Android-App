@@ -12,18 +12,6 @@
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_update_profile.xml" value="0.25" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_home.xml" value="0.17325227963525835" />
         <entry key="..\:/Users/belik/Desktop/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_profile.xml" value="0.17325227963525835" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_food_donation.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_homescreen.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_profile.xml" value="0.2857789855072464" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_register.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/activity_update_profile.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/food_item_layout.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_food_donation.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_home.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/yingz/Android/160/2021-fall-cs160-black-widow/app/src/main/res/layout/view_food_donation.xml" value="0.38697916666666665" />
         <entry key="app/src/main/res/drawable/item_selector.xml" value="0.14427083333333332" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.14166666666666666" />
         <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.14166666666666666" />
@@ -33,12 +21,14 @@
         <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.2671894323222169" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.300249047403028" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24053351033033812" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.19464285714285715" />
+        <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/food_item_layout.xml" value="0.28540736930931915" />
         <entry key="app/src/main/res/layout/fragment_food_donation.xml" value="0.1140625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2026487568873041" />
+        <entry key="app/src/main/res/layout/view_food_donation.xml" value="0.1515625" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.30439072670471895" />
       </map>
     </option>

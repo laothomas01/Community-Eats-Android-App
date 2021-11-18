@@ -2,6 +2,7 @@ package com.example.communityeats.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,9 +34,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ValueEventListener;
 import com.bumptech.glide.Glide;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class HomeScreenActivity extends AppCompatActivity {
+public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.OnItemClickListener{
     private DatabaseReference FoodItemsRef;
     private RecyclerView recyclerView;
     MyAdapter myAdapter;
@@ -55,7 +58,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         String uid = FoodItemsRef.getKey();
 
          list = new ArrayList<>();
-         myAdapter = new MyAdapter(this, list);
+         myAdapter = new MyAdapter(this, list, this);
          recyclerView.setAdapter(myAdapter);
 
          FoodItemsRef.addValueEventListener(new ValueEventListener() {
@@ -101,5 +104,20 @@ public class HomeScreenActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        FoodDonationItem foodItem = list.get(position);
+        Intent intent = new Intent(this, ViewFoodDonation.class);
+        intent.putExtra("foodName", foodItem.foodName);
+        intent.putExtra("foodDate", foodItem.date);
+        intent.putExtra("description", foodItem.foodDescription);
+        intent.putExtra("quantity", foodItem.foodQuantity);
+        intent.putExtra("foodImage", foodItem.getFoodImageUrl());
+
+        intent.putExtra("FoodItem", foodItem);
+
+        startActivity(intent);
     }
 }
