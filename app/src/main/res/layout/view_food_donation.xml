@@ -52,12 +52,6 @@
             android:layout_marginBottom="1dp"
             android:text="Quanity" />
 
-        <TextView
-            android:id="@+id/recipientID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:text="RecipientID" />
 
         <Button
             android:id="@+id/accept_food_button"

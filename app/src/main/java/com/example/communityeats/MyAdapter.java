@@ -31,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
 
         this.context = context;
         this.list = list;
+        this.mListener =listener;
     }
 
     @NonNull
@@ -56,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
             @Override
             public void onClick(View v) {
 
-                mListener.onItemClick(holder, holder.getBindingAdapterPosition());
+                mListener.onItemClick(holder,holder.getBindingAdapterPosition());
 
             }
 
