@@ -138,13 +138,20 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.update_button:
-                startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
-            case R.id.logoutBtn: //if user clicks on logout button
-                logOut();
+//        switch (v.getId()) {
+//            case R.id.update_button:
+//                startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
+//            case R.id.logoutBtn: //if user clicks on logout button
+//                logOut();
+//        }
+        if (v.getId() == R.id.update_button) {
+            startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
+        }
+        if (v.getId() == R.id.logoutBtn) {
+            logOut();
         }
     }
+
     //logout function
     private void logOut() {
         FirebaseAuth.getInstance().signOut();
