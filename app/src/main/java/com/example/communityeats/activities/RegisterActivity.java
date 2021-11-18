@@ -1,10 +1,8 @@
-package com.example.communityeats;
+package com.example.communityeats.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.text.style.EasyEditSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.communityeats.R;
+import com.example.communityeats.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,7 +28,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText password;
     private EditText username;
     private EditText address;
-    
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +63,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         String usernameRegister = username.getText().toString().trim();
         String addressRegister = address.getText().toString().trim();
         //public User(String email, String password,String username, String address
-        User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister);
+        User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister, "");
         {
             mAuth.createUserWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
