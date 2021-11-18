@@ -56,9 +56,6 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
 
         String uid = FoodItemsRef.getKey();
 
-    //         @Override
-    //         public void onComplete(@NonNull Task<DataSnapshot> task) {
-    //                     DataSnapshot ds = task.getResult();
         list = new ArrayList<>();
 
         mFoodKey = new ArrayList<>();

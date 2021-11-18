@@ -20,7 +20,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     Context context;
     ArrayList<FoodDonationItem> list;
 
-=======
 
     private OnItemClickListener mListener;
     public interface OnItemClickListener {
