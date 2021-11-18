@@ -36,7 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
-public class HomeScreenActivity extends AppCompatActivity {
+public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.OnItemClickListener{
     private DatabaseReference FoodItemsRef;
     private RecyclerView recyclerView;
     MyAdapter myAdapter;
@@ -56,85 +56,45 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         String uid = FoodItemsRef.getKey();
 
-        // FoodItemsRef.child(uid).get().addOnCompleteListener()
-
- // change here
-    // FoodItemsRef.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
     //         @Override
     //         public void onComplete(@NonNull Task<DataSnapshot> task) {
-    //             //if you successfully got the task
-    //             if (task.isSuccessful()) {
-    //                 //if the food donation item exists
-    //                 if (task.getResult().exists()) {
-    //                     //toast
-    //                     Toast.makeText(HomeScreenActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
-    //                     //create a snapshot of that data
     //                     DataSnapshot ds = task.getResult();
+        list = new ArrayList<>();
 
-    //                     //get the email from the user node.
-    //                     // String email = String.valueOf(ds.child("email").getValue());
-    //                     // String username = String.valueOf(ds.child("username").getValue());
-    //                     // String address = String.valueOf(ds.child("address").getValue());
+        mFoodKey = new ArrayList<>();
+        myAdapter = new MyAdapter(this, list, this);
 
-    //                     String imageUrl = String.valueOf(ds.child("foodImageUrl").getValue());
-    //                     // String imageUrl = String.valueOf(ds.child("imageURL").getValue());
+        recyclerView.setAdapter(myAdapter);
 
+        FoodItemsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
+                    System.out.println("ID VALUE: " + dataSnapshot.child("recipientID").getValue());
+                    list.add(foodItem);
 
-    //                     // emailTxt.setText(email);
-    //                     // usernameTxt.setText(username);
-    //                     // addressTxt.setText(address);
+                    String uid = dataSnapshot.getKey();
+                    System.out.println("UID: " + uid);
+                    if (uid != null) {
+                        mFoodKey.add(uid);
+                    }
 
+                    if (!dataSnapshot.child("recipientID").getValue().equals("")) {
+                        list.remove(foodItem);
+                        mFoodKey.remove(uid);
+                    }
 
-    //                     Glide.with(HomeScreenActivity.this).load(imageUrl).into(profilePic);
+                }
+                myAdapter.notifyDataSetChanged();
+                System.out.println("Food Donation Item Added");
+            }
 
-    //                 } else {
-    //                     // Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
-    //                 }
-    //             } else {
-    //                 // Toast.makeText(ViewUserProfileActivity.this, "Failed to read", Toast.LENGTH_SHORT).show();
-    //             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-    //         }
-
-
-    //     });
-
-         list = new ArrayList<>();
-         myAdapter = new MyAdapter(this, list);
-<<<<<<< Updated upstream
-         mFoodKey = new ArrayList<>();
-         myAdapter = new MyAdapter(this, list, this);
-         recyclerView.setAdapter(myAdapter);
-
-         FoodItemsRef.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                     FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
-                     System.out.println("ID VALUE: " + dataSnapshot.child("recipientID").getValue());
-                     list.add(foodItem);
-
-                     String uid = dataSnapshot.getKey();
-                     System.out.println("UID: " + uid);
-                     if (uid!=null)  {
-                         mFoodKey.add(uid);
-                     }
-
-                     if(!dataSnapshot.child("recipientID").getValue().equals("") ) {
-                         list.remove(foodItem);
-                         mFoodKey.remove(uid);
-                     }
-
-                 }
-                 myAdapter.notifyDataSetChanged();
-                 System.out.println("Food Donation Item Added");
-             }
-
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
-
-             }
-         });
+            }
+        });
         VerticalSpaceItemDecoration dividerItemDecoration = new VerticalSpaceItemDecoration(20);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
@@ -146,18 +106,18 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch(id){
+                switch (id) {
                     case R.id.nav_home:
                         startActivity(new Intent(HomeScreenActivity.this, HomeScreenActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_food:
                         startActivity(new Intent(HomeScreenActivity.this, FoodDonationActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
                         startActivity(new Intent(HomeScreenActivity.this, ViewUserProfileActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
 
@@ -166,6 +126,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
 
+    }
 
     @Override
     public void onItemClick(MyAdapter.FoodItemViewHolder holder, int position) {
@@ -183,6 +144,5 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
 }
 

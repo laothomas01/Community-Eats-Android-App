@@ -20,16 +20,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     Context context;
     ArrayList<FoodDonationItem> list;
 
-    public MyAdapter(Context context, ArrayList<FoodDonationItem> list) {
-<<<<<<< Updated upstream
 =======
+
     private OnItemClickListener mListener;
     public interface OnItemClickListener {
         void onItemClick(FoodItemViewHolder holder, int position);
     }
 
 
->>>>>>> Stashed changes
+    public MyAdapter(Context context, ArrayList<FoodDonationItem> list, OnItemClickListener listener) {
+
         this.context = context;
         this.list = list;
     }
@@ -52,7 +52,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         Glide.with(context).load(foodItem.getFoodImageUrl()).into(holder.foodImage);
         // System.out.println("IMAGE URL:" + foodItem.getFoodImageUrl());
 
-=======
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -64,8 +63,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
 
         });
 
-
->>>>>>> Stashed changes
     }
 
     @Override
@@ -78,9 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         public TextView foodItemName, foodItemQuantity, foodItemDescription;
         public ImageView foodImage;
 
-<<<<<<< Updated upstream
 
->>>>>>> Stashed changes
         public FoodItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -90,7 +85,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
             foodItemDescription = (TextView) itemView.findViewById(R.id.item_description);
 
 
->>>>>>> Stashed changes
         }
 
 
