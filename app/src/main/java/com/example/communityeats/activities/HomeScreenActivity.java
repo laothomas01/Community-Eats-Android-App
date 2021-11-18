@@ -144,7 +144,7 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
         startActivity(intent);
     }
 
-    @Override
+
     public void onItemClick(int position) {
         FoodDonationItem foodItem = list.get(position);
         Intent intent = new Intent(this, ViewFoodDonation.class);
