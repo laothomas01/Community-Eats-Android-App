@@ -1,6 +1,7 @@
 package com.example.communityeats.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -154,6 +155,20 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
 
     //logout function
     private void logOut() {
+
+        //==========================================================================================
+        // Forget Remember Me Feature while Logging Out
+
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("remember", "false");
+
+        editor.apply();
+
+        // End of Forget Remember Me Feature while Logging Out
+        //==========================================================================================
+
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(ViewUserProfileActivity.this, LoginActivity.class));
         Toast.makeText(ViewUserProfileActivity.this, "Logged out. See you soon!", Toast.LENGTH_LONG).show();
