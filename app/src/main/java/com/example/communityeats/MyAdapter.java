@@ -20,16 +20,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     Context context;
     ArrayList<FoodDonationItem> list;
 
+
     private OnItemClickListener mListener;
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(FoodItemViewHolder holder, int position);
     }
 
 
     public MyAdapter(Context context, ArrayList<FoodDonationItem> list, OnItemClickListener listener) {
+
         this.context = context;
         this.list = list;
-        this.mListener = listener;
+        this.mListener =listener;
     }
 
     @NonNull
@@ -43,7 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
     public void onBindViewHolder(@NonNull FoodItemViewHolder holder, int position) {
         FoodDonationItem foodItem = list.get(position);
 
-
         holder.foodItemName.setText(foodItem.getFoodName());
         holder.foodItemQuantity.setText(foodItem.getFoodQuantity());
         holder.foodItemDescription.setText(foodItem.getFoodDescription());
@@ -51,6 +52,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         Glide.with(context).load(foodItem.getFoodImageUrl()).into(holder.foodImage);
         // System.out.println("IMAGE URL:" + foodItem.getFoodImageUrl());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                mListener.onItemClick(holder,holder.getBindingAdapterPosition());
+
+            }
+
+        });
 
     }
 
@@ -81,6 +92,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         public void onClick(View v) {
             mListener.onItemClick(getBindingAdapterPosition());
         }
+
+
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.communityeats.activities;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
     private RecyclerView recyclerView;
     MyAdapter myAdapter;
     ArrayList<FoodDonationItem> list;
+    ArrayList<String> mFoodKey;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,27 +59,44 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
 
         String uid = FoodItemsRef.getKey();
 
-         list = new ArrayList<>();
-         myAdapter = new MyAdapter(this, list, this);
-         recyclerView.setAdapter(myAdapter);
+        list = new ArrayList<>();
 
-         FoodItemsRef.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                     FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
-                     list.add(foodItem);
-                 }
-                 myAdapter.notifyDataSetChanged();
-                 System.out.println("Food Donation Item Added");
-             }
+        mFoodKey = new ArrayList<>();
+        myAdapter = new MyAdapter(this, list, this);
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
+        recyclerView.setAdapter(myAdapter);
 
-             }
-         });
+        FoodItemsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
+                    System.out.println("ID VALUE: " + dataSnapshot.child("recipientID").getValue());
+                    list.add(foodItem);
 
+                    String uid = dataSnapshot.getKey();
+                    System.out.println("UID: " + uid);
+                    if (uid != null) {
+                        mFoodKey.add(uid);
+                    }
+
+                    if (!dataSnapshot.child("recipientID").getValue().equals("")) {
+                        list.remove(foodItem);
+                        mFoodKey.remove(uid);
+                    }
+
+                }
+                myAdapter.notifyDataSetChanged();
+                System.out.println("Food Donation Item Added");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        VerticalSpaceItemDecoration dividerItemDecoration = new VerticalSpaceItemDecoration(20);
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -87,23 +106,42 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch(id){
+                switch (id) {
                     case R.id.nav_home:
                         startActivity(new Intent(HomeScreenActivity.this, HomeScreenActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_food:
                         startActivity(new Intent(HomeScreenActivity.this, FoodDonationActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
                         startActivity(new Intent(HomeScreenActivity.this, ViewUserProfileActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
+
+
+    }
+
+    @Override
+    public void onItemClick(MyAdapter.FoodItemViewHolder holder, int position) {
+        FoodDonationItem foodItem = list.get(position);
+        Intent intent = new Intent(this, ViewFoodDonation.class);
+        intent.putExtra("foodName", foodItem.foodName);
+        intent.putExtra("foodDate", foodItem.date);
+        intent.putExtra("description", foodItem.foodDescription);
+        intent.putExtra("quantity", foodItem.foodQuantity);
+        intent.putExtra("foodImage", foodItem.getFoodImageUrl());
+
+        String foodKey = mFoodKey.get(holder.getBindingAdapterPosition());
+        System.out.println("FOOD KEY:" + foodKey);
+        intent.putExtra("FoodKey", foodKey);
+
+        startActivity(intent);
     }
 
     @Override
@@ -121,3 +159,4 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
         startActivity(intent);
     }
 }
+

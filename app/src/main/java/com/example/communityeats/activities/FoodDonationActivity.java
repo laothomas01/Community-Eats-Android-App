@@ -130,6 +130,7 @@ public class FoodDonationActivity extends AppCompatActivity implements View.OnCl
         }
         else {
             storeFoodDonationInfo();
+            startActivity(new Intent(FoodDonationActivity.this,FoodDonationActivity.class));
             
         }
 
