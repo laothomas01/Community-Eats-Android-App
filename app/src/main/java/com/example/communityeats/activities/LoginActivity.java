@@ -24,7 +24,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private TextView signup;
     private FirebaseAuth mAuth;
     private Button login;
-    private TextView signUp;
+
+    //private TextView signUp;
     private EditText editTextEmail;
     private EditText editTextPassword;
 
@@ -39,6 +40,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         login = (Button) findViewById(R.id.signIn);
         login.setOnClickListener(this);
+
         signup = (TextView) findViewById(R.id.signup);
         signup.setOnClickListener(this);
 

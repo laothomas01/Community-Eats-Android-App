@@ -20,6 +20,8 @@ public class FoodItemViewHolder extends RecyclerView.ViewHolder implements View.
         foodItemName = (TextView) itemView.findViewById(R.id.item_name);
         foodItemQuantity = (TextView) itemView.findViewById(R.id.item_quantity);
         foodItemDescription = (TextView) itemView.findViewById(R.id.item_description);
+
+        itemView.setOnClickListener(this);
         
     }
 

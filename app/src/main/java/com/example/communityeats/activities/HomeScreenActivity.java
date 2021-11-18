@@ -117,7 +117,6 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
                         overridePendingTransition(0, 0);
                         return true;
                 }
-
                 return false;
             }
         });
