@@ -47,13 +47,19 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnRegister:
-                registerUser();
-
-            case R.id.btnHaveAccount:
-                startActivity(new Intent(this, LoginActivity.class));
+        if (v.getId() == R.id.btnRegister) {
+            registerUser();
         }
+        if (v.getId() == R.id.btnHaveAccount) {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+//        switch (v.getId()) {
+//            case R.id.btnRegister:
+//                registerUser();
+//
+//            case R.id.btnHaveAccount:
+//                startActivity(new Intent(this, LoginActivity.class));
+//        }
 
     }
 
@@ -63,8 +69,25 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         String usernameRegister = username.getText().toString().trim();
         String addressRegister = address.getText().toString().trim();
         //public User(String email, String password,String username, String address
+        if (emailRegister.isEmpty() && passwordRegister.isEmpty() && usernameRegister.isEmpty() && addressRegister.isEmpty()) {
+            email.setError("Enter an email!");
+            password.setError("Enter a password!");
+            username.setError("Enter a username!");
+            address.setError("Enter an address!");
+            Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (emailRegister.isEmpty() || passwordRegister.isEmpty() || usernameRegister.isEmpty() || addressRegister.isEmpty()) {
+            email.setError("Enter an email!");
+            password.setError("Enter a password!");
+            username.setError("Enter a username!");
+            address.setError("Enter an address!");
+            Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
+            return;
+        }
         User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister, "");
         {
+
             mAuth.createUserWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                 @Override
@@ -78,17 +101,23 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                 } else {
+
                                     Toast.makeText(RegisterActivity.this, "Failed to register User!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
                     } else {
+                        email.setError("Invalid Email!");
+
                         Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
+
         }
+
     }
 }
