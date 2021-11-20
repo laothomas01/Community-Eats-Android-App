@@ -77,6 +77,14 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
             return;
         }
+        if (emailRegister.isEmpty() || passwordRegister.isEmpty() || usernameRegister.isEmpty() || addressRegister.isEmpty()) {
+            email.setError("Enter an email!");
+            password.setError("Enter a password!");
+            username.setError("Enter a username!");
+            address.setError("Enter an address!");
+            Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
+            return;
+        }
         User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister, "");
         {
 
@@ -101,8 +109,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             }
                         });
                     } else {
-                        email.setError("Email has already been taken!");
-                        password.setError("Password length is too short");
+                        email.setError("Invalid Email!");
+
                         Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_LONG).show();
                     }
                 }
