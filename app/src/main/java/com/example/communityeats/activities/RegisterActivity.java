@@ -95,11 +95,14 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                                     Toast.makeText(RegisterActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                 } else {
+
                                     Toast.makeText(RegisterActivity.this, "Failed to register User!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
                     } else {
+                        email.setError("Email has already been taken!");
+                        password.setError("Password length is too short");
                         Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_LONG).show();
                     }
                 }
