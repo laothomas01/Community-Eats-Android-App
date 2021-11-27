@@ -23,14 +23,13 @@
 
         android:layout_marginStart="28dp"
         android:layout_marginTop="276dp"
-        android:background="@color/white"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:shape="rectangle"
-        android:textColorHint="@color/black"
         android:textSize="24sp"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,34 +37,31 @@
         android:id="@+id/password"
         android:layout_width="350dp"
         android:layout_height="60dp"
-
         android:layout_marginStart="30dp"
         android:layout_marginTop="377dp"
-
-
-        android:background="@color/white"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
         android:shape="rectangle"
-        android:textColorHint="@color/black"
         android:textSize="24sp"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="130dp"
+        android:layout_width="226dp"
+        android:layout_height="55dp"
         android:layout_marginTop="475dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="@color/white"
         android:padding="15dp"
         android:text="Login"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="23sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

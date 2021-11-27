@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="Update Profile Page"
+        android:text="Update Profile Pic"
         android:textAlignment="center"
         android:textColor="#22E11E"
         android:textSize="40sp"
