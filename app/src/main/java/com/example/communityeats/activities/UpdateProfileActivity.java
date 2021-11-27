@@ -50,6 +50,8 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
     ///user Id from firebase
     String uid;
 
+    StorageReference filepath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,19 +76,24 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            /*
-            will do 2 things:
-                -set users profile picture to desired picture
-             */
-            case R.id.Submit:
-                storeProfilePictureInfo();
-
-            case R.id.upload_profile_image:
-                openGallery();
-
+//        switch (v.getId()) {
+//            /*
+//            will do 2 things:
+//                -set users profile picture to desired picture
+//             */
+//            case R.id.Submit:
+//                storeProfilePictureInfo();
+//
+//            case R.id.upload_profile_image:
+//                openGallery();
+//
+//        }
+        if (v.getId() == R.id.Submit) {
+            storeProfilePictureInfo();
         }
-
+        if (v.getId() == R.id.upload_profile_image) {
+            openGallery();
+        }
 
     }
 
@@ -112,50 +119,58 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
     }
 
     private void storeProfilePictureInfo() {
-        StorageReference filepath = storage.child(imageUri.getLastPathSegment() + ".jpg");
-        final UploadTask uploadTask = filepath.putFile(imageUri);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UpdateProfileActivity.this, "Error: " + e.toString(), Toast.LENGTH_LONG).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        if (imageUri == null) {
+            Toast.makeText(this, "Profile image is required. Please upload image.", Toast.LENGTH_LONG).show();
+        } else {
+            filepath = storage.child(imageUri.getLastPathSegment() + ".jpg");
+            final UploadTask uploadTask = filepath.putFile(imageUri);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(UpdateProfileActivity.this, "Error: " + e.toString(), Toast.LENGTH_LONG).show();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(UpdateProfileActivity.this, "Image uploaded Successfully ", Toast.LENGTH_LONG).show();
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(UpdateProfileActivity.this, "Image uploaded Successfully ", Toast.LENGTH_LONG).show();
 
 
-                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()) {
-                            throw task.getException();
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        @Override
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if (!task.isSuccessful()) {
+                                throw task.getException();
+                            }
+
+                            downloadImageUrl = filepath.getDownloadUrl().toString();
+                            return filepath.getDownloadUrl();
                         }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
 
-                        downloadImageUrl = filepath.getDownloadUrl().toString();
-                        return filepath.getDownloadUrl();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                downloadImageUrl = task.getResult().toString();
+                                Toast.makeText(UpdateProfileActivity.this, "Retrieved item image Url", Toast.LENGTH_LONG).show();
 
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()) {
-                            downloadImageUrl = task.getResult().toString();
-                            Toast.makeText(UpdateProfileActivity.this, "Retrieved item image Url", Toast.LENGTH_LONG).show();
+                                ref.child(uid).child("imageURL").setValue(downloadImageUrl);
 
-                            ref.child(uid).child("imageURL").setValue(downloadImageUrl);
+                                startActivity(new Intent(UpdateProfileActivity.this, ViewUserProfileActivity.class));
 
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
 
 
-        });
-
+            });
+        }
 
     }
 
+
 }
+
+
 

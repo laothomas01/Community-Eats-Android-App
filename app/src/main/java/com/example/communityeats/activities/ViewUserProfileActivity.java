@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.example.communityeats.R;
@@ -105,10 +106,6 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
             }
         });
 
-//        Glide.with(this).load(imageUrl).into(profilePic);
-
-//
-//        System.out.println(uid);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -139,12 +136,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.update_button:
-//                startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
-//            case R.id.logoutBtn: //if user clicks on logout button
-//                logOut();
-//        }
+
         if (v.getId() == R.id.update_button) {
             startActivity(new Intent(ViewUserProfileActivity.this, UpdateProfileActivity.class));
         }

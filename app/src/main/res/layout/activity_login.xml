@@ -23,13 +23,13 @@
 
         android:layout_marginStart="28dp"
         android:layout_marginTop="276dp"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:shape="rectangle"
         android:textSize="24sp"
-        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,29 +39,30 @@
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="377dp"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
         android:shape="rectangle"
         android:textSize="24sp"
-        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="226dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="475dp"
+        android:layout_width="223dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="464dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/white"
         android:padding="15dp"
         android:text="Login"
         android:textColor="@color/black"
-        android:textSize="23sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
