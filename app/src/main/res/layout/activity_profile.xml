@@ -17,48 +17,58 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    <ImageView
-        android:id="@+id/user_profile_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/ic_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/display_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username" />
-
-    <TextView
-        android:id="@+id/display_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address" />
-
-    <TextView
-        android:id="@+id/display_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email" />
+        <ImageView
+            android:id="@+id/user_profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/update_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Profile Pic" />
+        <TextView
+            android:id="@+id/display_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="                                 Username"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/logoutBtn"
-        android:text="Logout" />
+        <TextView
+            android:id="@+id/display_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="                                  Address"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/display_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="                                     Email"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Profile Pic" />
+
 
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
