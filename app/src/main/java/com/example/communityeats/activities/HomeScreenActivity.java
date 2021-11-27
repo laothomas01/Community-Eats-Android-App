@@ -3,6 +3,8 @@ package com.example.communityeats.activities;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -136,12 +138,17 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
     @Override
     protected void onResume() {
         super.onResume();
-//        if (myAdapter.getItemCount() == 0) {
-//            emptystate.setVisibility(View.VISIBLE);
-//        }
-//        else {
-//            emptystate.setVisibility(View.INVISIBLE);
-//        }
+
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (myAdapter.getItemCount() == 0) {
+                    emptystate.setVisibility(View.VISIBLE);
+                }
+            }
+        }, 2000);
+
 
     }
 
