@@ -40,9 +40,6 @@
             android:name=".activities.HomeScreenActivity"
             android:label="Preferences"></activity>
         <activity
-            android:name=".activities.HomeActivity"
-            android:label="Preferences" />
-        <activity
             android:name=".activities.ViewFoodDonation"
             android:label="Preferences" />
     </application>

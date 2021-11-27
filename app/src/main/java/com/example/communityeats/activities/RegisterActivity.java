@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -77,14 +78,26 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
             return;
         }
-        if (emailRegister.isEmpty() || passwordRegister.isEmpty() || usernameRegister.isEmpty() || addressRegister.isEmpty()) {
+        if (emailRegister.isEmpty()) {
             email.setError("Enter an email!");
-            password.setError("Enter a password!");
-            username.setError("Enter a username!");
-            address.setError("Enter an address!");
-            Toast.makeText(RegisterActivity.this, "Missing Information!", Toast.LENGTH_LONG).show();
             return;
         }
+
+        if (passwordRegister.isEmpty()) {
+            password.setError("Enter a password!");
+            return;
+        }
+
+        if (usernameRegister.isEmpty()) {
+            username.setError("Enter a username!");
+            return;
+        }
+
+        if (addressRegister.isEmpty()) {
+            address.setError("Enter an address!");
+            return;
+        }
+
         User u = new User(emailRegister, passwordRegister, usernameRegister, addressRegister, "");
         {
 
@@ -109,10 +122,34 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             }
                         });
                     } else {
-                        email.setError("Invalid Email!");
 
                         Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_LONG).show();
+
+                        String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+
+                        switch (errorCode) {
+
+                            case "ERROR_INVALID_EMAIL":
+                                Toast.makeText(RegisterActivity.this, "Email address is invalid", Toast.LENGTH_LONG).show();
+                                email.setError("Email must be in valid email address format!");
+                                email.requestFocus();
+                                break;
+
+                            case "ERROR_EMAIL_ALREADY_IN_USE":
+                                Toast.makeText(RegisterActivity.this, "Email address is invalid", Toast.LENGTH_LONG).show();
+                                email.setError("Email address is already in use!");
+                                email.requestFocus();
+                                break;
+
+                            case "ERROR_WEAK_PASSWORD":
+                                Toast.makeText(RegisterActivity.this, "Password is invalid", Toast.LENGTH_LONG).show();
+                                password.setError("Password must be at least 6 characters!");
+                                password.requestFocus();
+                                break;
+                        }
+
                     }
+
                 }
             });
 

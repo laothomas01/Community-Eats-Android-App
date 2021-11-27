@@ -80,7 +80,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                     //if the user exists
                     if (task.getResult().exists()) {
                         //toast
-                        Toast.makeText(ViewUserProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ViewUserProfileActivity.this, "Successful Read", Toast.LENGTH_SHORT).show();
                         //create a snapshot of that data
                         DataSnapshot ds = task.getResult();
                         //get the email from the user node.

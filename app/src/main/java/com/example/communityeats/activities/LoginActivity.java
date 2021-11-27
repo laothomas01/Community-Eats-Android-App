@@ -29,7 +29,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private Button login;
 
-    //private TextView signUp;
+
     private EditText editTextEmail;
     private EditText editTextPassword;
 
@@ -94,7 +94,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                                                         editor.apply();
 
-                                                        Toast.makeText(LoginActivity.this, "Unhecked", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                                                     }
 
                                                 }
@@ -146,7 +146,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+
                     loginToken = task.getResult().getUser().getEmail();
 
                     startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));

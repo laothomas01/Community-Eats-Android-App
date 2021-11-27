@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,11 +46,13 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
     MyAdapter myAdapter;
     ArrayList<FoodDonationItem> list;
     ArrayList<String> mFoodKey;
+    private TextView emptystate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+        emptystate = findViewById(R.id.emptystate);
 
         FoodItemsRef = FirebaseDatabase.getInstance().getReference("FoodDonationItem");
 
@@ -69,6 +72,7 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
         FoodItemsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     FoodDonationItem foodItem = dataSnapshot.getValue(FoodDonationItem.class);
                     System.out.println("ID VALUE: " + dataSnapshot.child("recipientID").getValue());
@@ -95,8 +99,10 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
 
             }
         });
+
         VerticalSpaceItemDecoration dividerItemDecoration = new VerticalSpaceItemDecoration(20);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -128,6 +134,18 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+//        if (myAdapter.getItemCount() == 0) {
+//            emptystate.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            emptystate.setVisibility(View.INVISIBLE);
+//        }
+
+    }
+
+    @Override
     public void onItemClick(MyAdapter.FoodItemViewHolder holder, int position) {
         FoodDonationItem foodItem = list.get(position);
         Intent intent = new Intent(this, ViewFoodDonation.class);
@@ -144,19 +162,5 @@ public class HomeScreenActivity extends AppCompatActivity implements MyAdapter.O
         startActivity(intent);
     }
 
-
-    public void onItemClick(int position) {
-        FoodDonationItem foodItem = list.get(position);
-        Intent intent = new Intent(this, ViewFoodDonation.class);
-        intent.putExtra("foodName", foodItem.foodName);
-        intent.putExtra("foodDate", foodItem.date);
-        intent.putExtra("description", foodItem.foodDescription);
-        intent.putExtra("quantity", foodItem.foodQuantity);
-        intent.putExtra("foodImage", foodItem.getFoodImageUrl());
-
-        intent.putExtra("FoodItem", foodItem);
-
-        startActivity(intent);
-    }
 }
 

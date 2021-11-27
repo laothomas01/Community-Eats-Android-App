@@ -43,8 +43,24 @@ public class LoginActivityTest1 {
 
     @Test
     public void loginActivityTest1() {
+
+
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.email), withText("Email Address"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        editText.perform(replaceText("ace@gmail.com"), closeSoftKeyboard());
+
+
+        ViewInteraction editText2 = onView(
+                allOf(withId(R.id.email), withText("Password"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        editText.perform(replaceText("123456"), closeSoftKeyboard());
+
+
         ViewInteraction button = onView(
-                allOf(withId(R.id.signIn), withText("Login"),
+                allOf(withId(R.id.signIn),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -53,25 +69,14 @@ public class LoginActivityTest1 {
                         isDisplayed()));
         button.perform(click());
 
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.email), withText("Email Address"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        editText.check(matches(withText("")));
+//
+//        ViewInteraction editText2 = onView(
+//                allOf(withId(R.id.password), withText("Password"),
+//                        withParent(withParent(withId(android.R.id.content))),
+//                        isDisplayed()));
+//        editText2.check(matches(withText("")));
 
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.password), withText("Password"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        editText2.check(matches(withText("")));
 
-        ViewInteraction editText3 = onView(
-                allOf(withId(R.id.password), withText("Password"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        editText3.check(matches(withText("")));
-
-        pressBack();
     }
 
     private static Matcher<View> childAtPosition(
