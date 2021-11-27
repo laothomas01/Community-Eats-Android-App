@@ -95,7 +95,7 @@ public class ViewUserProfileActivity extends AppCompatActivity implements View.O
                         usernameTxt.setText(username);
                         addressTxt.setText(address);
 
-                        Glide.with(ViewUserProfileActivity.this).load(imageUrl).into(profilePic);
+                        Glide.with(ViewUserProfileActivity.this).load(imageUrl).circleCrop().into(profilePic);
 
                     } else {
                         Toast.makeText(ViewUserProfileActivity.this, "User Not exist", Toast.LENGTH_SHORT).show();
