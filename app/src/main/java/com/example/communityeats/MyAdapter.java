@@ -46,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FoodItemViewHolder
         FoodDonationItem foodItem = list.get(position);
 
         holder.foodItemName.setText(foodItem.getFoodName());
-        holder.foodItemQuantity.setText(foodItem.getFoodQuantity());
+        holder.foodItemQuantity.setText("Quantity: " + foodItem.getFoodQuantity());
         holder.foodItemDescription.setText(foodItem.getFoodDescription());
         Glide.with(context).load(foodItem.getFoodImageUrl()).into(holder.foodImage);
         // System.out.println("IMAGE URL:" + foodItem.getFoodImageUrl());

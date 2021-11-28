@@ -64,9 +64,9 @@ public class ViewFoodDonation extends AppCompatActivity implements View.OnClickL
             uid = b.getString("FoodKey");
 
             item_name.setText(name);
-            date.setText(foodDate);
+            date.setText("Date: " + foodDate);
             item_description.setText(description);
-            foodQuanity.setText(quantity);
+            foodQuanity.setText("Quantity: " + quantity);
             Glide.with(this).load(imageURL).into(food_photo);
         }
 
