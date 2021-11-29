@@ -14,5 +14,8 @@
   - Look click open existing project and look for folder named ```2021-fall-cs160-black-widow```
   - So you should see, your files being loaded in. It will take a while. Once loading is finished, look up, and you will see a green sideways triangle. Press it to run the app. 
   - Congratulations, the app is running! 
-  
+ # Instruction manual on how to use the app
+https://docs.google.com/document/d/13BNxpDGRzRsuyrhh7gRAbXcAM3COfyekS4Y86jUeM-k/edit?usp=sharing
+
+# Application Test Cases
 [TestCases](https://github.com/jreese14/2021-fall-cs160-black-widow/tree/dev-branch/app/src/androidTest/java/com/example/communityeats/activities)
