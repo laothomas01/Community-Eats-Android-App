@@ -1,4 +1,4 @@
-# COMMUNITY-EATS APPLICATION(Will be updated to look better)
+# COMMUNITY-EATS APPLICATION(ReadMe will be updated to look better)
 # Description
   - COMMUNITY-EATS is an android application designed to be a market place for users to donate left over foods for volunteers at homeless shelters to pick up. 
   
